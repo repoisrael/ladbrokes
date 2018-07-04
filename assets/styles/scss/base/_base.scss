@@ -1,0 +1,58 @@
+// -----------------------------------------------------------------------------
+// This file contains very basic styles.
+// -----------------------------------------------------------------------------
+
+body {
+ color: $brand-color;
+ font: normal $font-size-base $text-font-stack;
+ direction: if-rtl(rtl, ltr);
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+  padding:0;
+  margin:0;
+}
+.noselect{
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome and Opera */
+}
+
+
+/**
+ * Basic styles for links
+ */
+a {
+    color: $color-black;
+  @include on-event {
+    color:  $color-white;
+    text-decoration: none !important;
+    outline: none !important;
+  }
+}
+
+.list-item{
+  list-style-type: none;
+}
+
+.site-wrapper{
+  width:100%;
+  background:transparent;
+}
+hr{
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  }
