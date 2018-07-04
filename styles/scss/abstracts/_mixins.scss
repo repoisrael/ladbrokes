@@ -1,0 +1,72 @@
+@mixin rgba-color($color, $background) {
+  $percent: alpha($color) * 100%;
+  $opaque: opacify($color, 1);
+  $solid-color: mix($opaque, $background, $percent);
+  background-color: $solid-color;
+  background-color: $color;
+}
+
+
+@mixin on-event($self: false) {
+  @if $self {
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  } @else {
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  }
+}
+
+@mixin respond-to($breakpoint) {
+  $raw-query: map-get($breakpoints, $breakpoint);
+
+  @if $raw-query {
+    $query: if(
+      type-of($raw-query) == 'string',
+      unquote($raw-query),
+      inspect($raw-query)
+    );
+
+    @media #{$query} {
+      @content;
+    }
+  } @else {
+    @error 'No value found for `#{$breakpoint}`. '
+         + 'Please make sure it is defined in `$breakpoints` map.';
+  }
+}
+
+@mixin padding($h,$w:0){
+  padding:$h+px $w+px;
+}
+
+@mixin box-shadow($top, $left, $bottom, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow:inset $top $left $bottom $blur $color;
+    -moz-box-shadow:inset $top $left $bottom $blur $color;
+    box-shadow:inset $top $left $bottom $blur $color;
+  } @else {
+    -webkit-box-shadow: $top $left $bottom $blur $color;
+    -moz-box-shadow: $top $left $bottom $blur $color;
+    box-shadow: $top $left $bottom $blur $color;
+  }
+}
+
+@mixin if-ltr {
+  @if $dir != rtl {
+    @content;
+  }
+}
+
+@mixin if-rtl {
+  @if $dir == rtl {
+    @content;
+  }
+}

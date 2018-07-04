@@ -1,0 +1,64 @@
+.grid {
+    max-width:$max-width;
+    display:block;
+    height:auto;
+    position:relative;
+    z-index: 1;
+   
+    &__list {
+        display:block;
+        text-align: center;
+    }
+    
+    &__item {
+        position:relative;
+        z-index: 99;
+
+        list-style-type: none;
+        display:block;
+        float:left;
+        width:calc(100%/3);
+
+        @include respond-to('small'){
+            width:calc(100%/2);
+        }
+        
+        @include respond-to('extra-small'){
+            width:100%;
+        }
+        
+
+
+        $li: &;
+
+        &_link{
+                margin:10px auto;
+                width:200px;
+                height:200px;
+                position:relative;
+                display:block;
+                background-image:url("../../bugs-bunny.png");
+                background-repeat: no-repeat;
+                background-size:cover;
+                background-position: center center;
+                border-radius:50%;
+                transition:all 0.4s; 
+                box-shadow: -16px 16px 11px rgba(0,0,0,0.2);
+
+                &:hover{
+                    transform:scale(1.1,1.1);
+                    #{$li} &  {
+                        opacity:0.6;
+                   }
+                }
+            
+             @include respond-to('extra-small'){
+                position: relative; 
+                // z-index:0;
+            }
+        }
+
+    
+        }
+    
+}
